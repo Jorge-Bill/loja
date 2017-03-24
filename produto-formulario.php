@@ -1,10 +1,26 @@
-<?php include_once	'header.php'; ?>
+<?php
+require_once("cabecalho.php");
+require_once("banco-categoria.php");
+require_once("logica-usuario.php");
 
-	<form action="adiciona-produto.php">
-		Nome:
-		<input type="text" name="nome"><br/>
-		Preço:
-		<input type="number" name="preco"><br/>
-		<input type="submit" value="Cadastrar">
-	</form>
-<?php include_once	'footer.php'; ?>
+verificaUsuario();
+    $produto = array ("nome" => "", "descricao" => "", "preco" => "", categoria => "1" );
+    $usado = "";
+    $categorias = listaCategorias ($conexao);
+?>
+    <h1>Formulário de Produto</h1>
+    <form action="adiciona-produto.php" method="post">
+        <table class="table">
+           
+           <?php include("produto-formulario-base.php"); ?>
+
+            <tr>
+                <td>
+                    <input class="btn btn-primary" type="submit" value="Cadastrar">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <?php
+    include("rodape.php");
+?>
